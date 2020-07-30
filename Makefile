@@ -9,12 +9,12 @@ PREFIX?=/usr/local
 all: build
 
 build: $(CMAKE_MK)
-	ninja -C build
+	make -C build
 	@touch $(BUILT)
 
 $(CMAKE_MK):
 	@mkdir -p build
-	cd build; cmake ../ -DCMAKE_BUILD_TYPE=$(BUILDTYPE) -DCMAKE_INSTALL_PREFIX=$(PREFIX) -GNinja
+	cd build; cmake ../ -DCMAKE_BUILD_TYPE=$(BUILDTYPE) -DCMAKE_INSTALL_PREFIX=$(PREFIX)
 
 install: $(BUILT)
 	@$(MAKE) -C build install
